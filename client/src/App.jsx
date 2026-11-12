@@ -9,7 +9,7 @@ if(!sessionId){
   localStorage.setItem("sessionId", sessionId)
 }
 
-
+const API_URL = import.meta.env.VITE_API_URL
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
   const [ messages, setMessages ] = useState([])
   const [loading, setLoading ] = useState(false)
   const bottomRef = useRef(null)
+  
 
 
   async function handleSend(){
@@ -32,7 +33,7 @@ function App() {
     setLoading(true)
    
     try {
-        const response = await fetch("http://localhost:5000/api/chat", {
+        const response = await fetch(`${API_URL}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -71,7 +72,7 @@ function App() {
   useEffect(() => {
     async function loadChat() {
       try {
-        const response  = await fetch(`http://localhost:5000/api/chat/${sessionId}`)
+        const response  = await fetch(`${API_URL}/api/chat/${sessionId}`)
       const data = await response.json()
       if(response.ok) setMessages(data) 
       } catch (error) {
