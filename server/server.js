@@ -23,7 +23,7 @@ Only answer questions about the cafe. Keep replies short and friendly.
 
 
 const app = express()
-app.use(cors())
+app.use(cors("https://cafe-ai-assistant-three.vercel.app"))
 app.use(express.json())
 
 
