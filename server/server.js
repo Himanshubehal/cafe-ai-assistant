@@ -67,6 +67,6 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("DB connected"))
     .catch((err) => console.error(err))
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 500, () => {
     console.log("Server running on 5000")
 })
