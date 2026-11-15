@@ -39,7 +39,7 @@ app.post("/api/chat", async (req, res) => {
     try {
         const { message, sessionId } = req.body
         const response = await ai.models.generateContent({
-            model: "gemini-3.6-flash",
+            model: "gemini-3.8-flash",
             contents: message,
             config: {systemInstruction: cafeInfo}
         })
@@ -67,6 +67,6 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("DB connected"))
     .catch((err) => console.error(err))
 
-app.listen(process.env.PORT || 500, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log("Server running on 5000")
 })
